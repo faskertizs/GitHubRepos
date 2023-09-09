@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B9B63342AAC459900AFE43E /* HttpMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63332AAC459900AFE43E /* HttpMethodTests.swift */; };
+		0B9B63362AAC487900AFE43E /* RequestResourceProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63352AAC487900AFE43E /* RequestResourceProviderTests.swift */; };
 		0BB8A3E12AAB8E36009A1A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8A3E02AAB8E36009A1A78 /* AppDelegate.swift */; };
 		0BB8A3E32AAB8E36009A1A78 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8A3E22AAB8E36009A1A78 /* SceneDelegate.swift */; };
 		0BB8A3E52AAB8E36009A1A78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8A3E42AAB8E36009A1A78 /* ViewController.swift */; };
@@ -61,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B9B63332AAC459900AFE43E /* HttpMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethodTests.swift; sourceTree = "<group>"; };
+		0B9B63352AAC487900AFE43E /* RequestResourceProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResourceProviderTests.swift; sourceTree = "<group>"; };
 		0BB8A3DD2AAB8E36009A1A78 /* GitHubRepos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRepos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BB8A3E02AAB8E36009A1A78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BB8A3E22AAB8E36009A1A78 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 			children = (
 				0BB8A42D2AABB259009A1A78 /* SearchReposResponseDataMock.json */,
 				0BB8A42F2AABB2C7009A1A78 /* GitHubSearchResultDecoderTests.swift */,
+				0B9B63352AAC487900AFE43E /* RequestResourceProviderTests.swift */,
+				0B9B63332AAC459900AFE43E /* HttpMethodTests.swift */,
 			);
 			path = GitHubReposTests;
 			sourceTree = "<group>";
@@ -366,6 +372,8 @@
 				0BB8A4372AABC83C009A1A78 /* Extensions.swift in Sources */,
 				0BB8A41B2AABA46A009A1A78 /* NetworkingError.swift in Sources */,
 				0BB8A4232AABAE82009A1A78 /* GitHubRepo.swift in Sources */,
+				0B9B63362AAC487900AFE43E /* RequestResourceProviderTests.swift in Sources */,
+				0B9B63342AAC459900AFE43E /* HttpMethodTests.swift in Sources */,
 				0BB8A43D2AABCD21009A1A78 /* RequestResource.swift in Sources */,
 				0BB8A4332AABB788009A1A78 /* GitHubSearchResultDecoder.swift in Sources */,
 				0BB8A4182AAB9DA4009A1A78 /* DefaultNetworkManager.swift in Sources */,
