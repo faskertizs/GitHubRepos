@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B70C2292AACB4EF0078F446 /* RepositorySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C2282AACB4EF0078F446 /* RepositorySearchViewController.swift */; };
 		0B9B63342AAC459900AFE43E /* HttpMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63332AAC459900AFE43E /* HttpMethodTests.swift */; };
 		0B9B63362AAC487900AFE43E /* RequestResourceProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63352AAC487900AFE43E /* RequestResourceProviderTests.swift */; };
 		0B9B63392AAC58FB00AFE43E /* RepositorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63382AAC58FB00AFE43E /* RepositorySearchViewModel.swift */; };
@@ -18,8 +19,6 @@
 		0B9B63492AAC62D100AFE43E /* DefaultRepositorySearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63482AAC62D100AFE43E /* DefaultRepositorySearchViewModelTests.swift */; };
 		0BB8A3E12AAB8E36009A1A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8A3E02AAB8E36009A1A78 /* AppDelegate.swift */; };
 		0BB8A3E32AAB8E36009A1A78 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8A3E22AAB8E36009A1A78 /* SceneDelegate.swift */; };
-		0BB8A3E52AAB8E36009A1A78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8A3E42AAB8E36009A1A78 /* ViewController.swift */; };
-		0BB8A3E82AAB8E36009A1A78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BB8A3E62AAB8E36009A1A78 /* Main.storyboard */; };
 		0BB8A3EA2AAB8E37009A1A78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BB8A3E92AAB8E37009A1A78 /* Assets.xcassets */; };
 		0BB8A3ED2AAB8E37009A1A78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BB8A3EB2AAB8E37009A1A78 /* LaunchScreen.storyboard */; };
 		0BB8A4022AAB8E37009A1A78 /* GitHubReposUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8A4012AAB8E37009A1A78 /* GitHubReposUITests.swift */; };
@@ -70,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B70C2282AACB4EF0078F446 /* RepositorySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewController.swift; sourceTree = "<group>"; };
 		0B9B63332AAC459900AFE43E /* HttpMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethodTests.swift; sourceTree = "<group>"; };
 		0B9B63352AAC487900AFE43E /* RequestResourceProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResourceProviderTests.swift; sourceTree = "<group>"; };
 		0B9B63382AAC58FB00AFE43E /* RepositorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewModel.swift; sourceTree = "<group>"; };
@@ -80,8 +80,6 @@
 		0BB8A3DD2AAB8E36009A1A78 /* GitHubRepos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRepos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BB8A3E02AAB8E36009A1A78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BB8A3E22AAB8E36009A1A78 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0BB8A3E42AAB8E36009A1A78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0BB8A3E72AAB8E36009A1A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BB8A3E92AAB8E37009A1A78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BB8A3EC2AAB8E37009A1A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BB8A3EE2AAB8E37009A1A78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -130,6 +128,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B70C2272AACB4990078F446 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0B70C2282AACB4EF0078F446 /* RepositorySearchViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0B9B63372AAC586800AFE43E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,9 +205,8 @@
 			children = (
 				0BB8A3E02AAB8E36009A1A78 /* AppDelegate.swift */,
 				0BB8A3E22AAB8E36009A1A78 /* SceneDelegate.swift */,
-				0BB8A3E42AAB8E36009A1A78 /* ViewController.swift */,
-				0BB8A3E62AAB8E36009A1A78 /* Main.storyboard */,
 				0BB8A4342AABC806009A1A78 /* Helper */,
+				0B70C2272AACB4990078F446 /* View */,
 				0B9B63372AAC586800AFE43E /* ViewModel */,
 				0BB8A4202AABAE67009A1A78 /* Model */,
 				0BB8A41C2AABAD54009A1A78 /* Networking */,
@@ -371,7 +376,6 @@
 			files = (
 				0BB8A3ED2AAB8E37009A1A78 /* LaunchScreen.storyboard in Resources */,
 				0BB8A3EA2AAB8E37009A1A78 /* Assets.xcassets in Resources */,
-				0BB8A3E82AAB8E36009A1A78 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +402,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BB8A4142AAB93D8009A1A78 /* NetworkManager.swift in Sources */,
-				0BB8A3E52AAB8E36009A1A78 /* ViewController.swift in Sources */,
 				0BB8A41E2AABADBA009A1A78 /* GitHubServices.swift in Sources */,
 				0BB8A4392AABCCE7009A1A78 /* RequestResourceProvider.swift in Sources */,
 				0BB8A3E12AAB8E36009A1A78 /* AppDelegate.swift in Sources */,
@@ -411,6 +414,7 @@
 				0B9B633C2AAC59F100AFE43E /* DefaultRepositorySearchViewModel.swift in Sources */,
 				0BB8A4282AABB060009A1A78 /* GitHubSearchResult.swift in Sources */,
 				0B9B63392AAC58FB00AFE43E /* RepositorySearchViewModel.swift in Sources */,
+				0B70C2292AACB4EF0078F446 /* RepositorySearchViewController.swift in Sources */,
 				0BB8A43C2AABCD21009A1A78 /* RequestResource.swift in Sources */,
 				0BB8A42B2AABB0EA009A1A78 /* DefaultGitHubServices.swift in Sources */,
 				0BB8A3E32AAB8E36009A1A78 /* SceneDelegate.swift in Sources */,
@@ -469,14 +473,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0BB8A3E62AAB8E36009A1A78 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0BB8A3E72AAB8E36009A1A78 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0BB8A3EB2AAB8E37009A1A78 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -614,7 +610,6 @@
 				INFOPLIST_FILE = GitHubRepos/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -642,7 +637,6 @@
 				INFOPLIST_FILE = GitHubRepos/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
