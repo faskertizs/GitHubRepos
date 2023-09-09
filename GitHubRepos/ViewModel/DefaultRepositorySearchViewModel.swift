@@ -15,12 +15,16 @@ class DefaultRepositorySearchViewModel: RepositorySearchViewModel {
         self.gitHubServices = gitHubServices
     }
 
-    private(set) var repos: [GitHubRepo] = []
-    private(set) var searchTerm: String = "term"
+    private(set) var repos: Observable<[GitHubRepo]> = Observable([])
+    private(set) var searchTerm: String = ""
     
     func fetchRepositories() {
         gitHubServices.repositories(with: searchTerm) { [weak self] repos in
-            self?.repos = repos
+            self?.repos.value = repos
         }
+    }
+    
+    func updateSearchTerm(_ term: String) {
+        searchTerm = term
     }
 }

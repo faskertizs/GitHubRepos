@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0B70C2292AACB4EF0078F446 /* RepositorySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C2282AACB4EF0078F446 /* RepositorySearchViewController.swift */; };
 		0B70C2362AACF9D20078F446 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B70C2382AACF9D20078F446 /* Localizable.strings */; };
+		0B70C23C2AAD0E690078F446 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C23B2AAD0E690078F446 /* Observable.swift */; };
+		0B70C23D2AAD12090078F446 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C23B2AAD0E690078F446 /* Observable.swift */; };
 		0B9B63342AAC459900AFE43E /* HttpMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63332AAC459900AFE43E /* HttpMethodTests.swift */; };
 		0B9B63362AAC487900AFE43E /* RequestResourceProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63352AAC487900AFE43E /* RequestResourceProviderTests.swift */; };
 		0B9B63392AAC58FB00AFE43E /* RepositorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63382AAC58FB00AFE43E /* RepositorySearchViewModel.swift */; };
@@ -72,6 +74,7 @@
 /* Begin PBXFileReference section */
 		0B70C2282AACB4EF0078F446 /* RepositorySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewController.swift; sourceTree = "<group>"; };
 		0B70C2372AACF9D20078F446 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0B70C23B2AAD0E690078F446 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		0B9B63332AAC459900AFE43E /* HttpMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethodTests.swift; sourceTree = "<group>"; };
 		0B9B63352AAC487900AFE43E /* RequestResourceProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResourceProviderTests.swift; sourceTree = "<group>"; };
 		0B9B63382AAC58FB00AFE43E /* RepositorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewModel.swift; sourceTree = "<group>"; };
@@ -146,6 +149,14 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		0B70C23A2AAD0E570078F446 /* Binding */ = {
+			isa = PBXGroup;
+			children = (
+				0B70C23B2AAD0E690078F446 /* Observable.swift */,
+			);
+			path = Binding;
+			sourceTree = "<group>";
+		};
 		0B9B63372AAC586800AFE43E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +228,7 @@
 				0BB8A3E22AAB8E36009A1A78 /* SceneDelegate.swift */,
 				0BB8A4342AABC806009A1A78 /* Helper */,
 				0B70C2272AACB4990078F446 /* View */,
+				0B70C23A2AAD0E570078F446 /* Binding */,
 				0B9B63372AAC586800AFE43E /* ViewModel */,
 				0BB8A4202AABAE67009A1A78 /* Model */,
 				0BB8A41C2AABAD54009A1A78 /* Networking */,
@@ -426,6 +438,7 @@
 				0B9B633C2AAC59F100AFE43E /* DefaultRepositorySearchViewModel.swift in Sources */,
 				0BB8A4282AABB060009A1A78 /* GitHubSearchResult.swift in Sources */,
 				0B9B63392AAC58FB00AFE43E /* RepositorySearchViewModel.swift in Sources */,
+				0B70C23C2AAD0E690078F446 /* Observable.swift in Sources */,
 				0B70C2292AACB4EF0078F446 /* RepositorySearchViewController.swift in Sources */,
 				0BB8A43C2AABCD21009A1A78 /* RequestResource.swift in Sources */,
 				0BB8A42B2AABB0EA009A1A78 /* DefaultGitHubServices.swift in Sources */,
@@ -447,6 +460,7 @@
 				0BB8A41F2AABADBA009A1A78 /* GitHubServices.swift in Sources */,
 				0B9B63432AAC5D4500AFE43E /* ExtensionsForTests.swift in Sources */,
 				0BB8A4372AABC83C009A1A78 /* Extensions.swift in Sources */,
+				0B70C23D2AAD12090078F446 /* Observable.swift in Sources */,
 				0B9B63402AAC5C3D00AFE43E /* GitHubServicesMock.swift in Sources */,
 				0BB8A41B2AABA46A009A1A78 /* NetworkingError.swift in Sources */,
 				0BB8A4232AABAE82009A1A78 /* GitHubRepo.swift in Sources */,

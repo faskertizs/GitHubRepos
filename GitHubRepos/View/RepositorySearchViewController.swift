@@ -7,14 +7,25 @@
 
 import UIKit
 
-class RepositorySearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    let heightOfSearchBar: CGFloat = 50.0
+class RepositorySearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     private var tableView = UITableView()
     
     private var searchController = UISearchController(searchResultsController: nil)
+    
+    var viewModel: RepositorySearchViewModel!
 
+    // MARK: - Life Cycle
+    
+    init(viewModel: RepositorySearchViewModel!) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,22 +34,40 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
         setupSearchController()
         
         prepareTableView()
+        
+        bind(to: viewModel)
+    }
+    
+    // MARK: - Binding
+    
+    private func bind(to viewModel: RepositorySearchViewModel) {
+        viewModel.repos.observe(on: self) { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
     
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return viewModel.repos.value.count
     }
     
     // MARK: - Table View Data Source
-    
-    var cellText = "Repository"
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "\(cellText) \(indexPath.row)"
+        cell.textLabel?.text = viewModel.repos.value[indexPath.row].name
         return cell
+    }
+    
+    // MARK: - Search Bar Delegate
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let term = searchController.searchBar.text else { return }
+        viewModel.updateSearchTerm(term)
+        viewModel.fetchRepositories()
     }
     
     // MARK: - Helper Methods
@@ -67,6 +96,8 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
         searchController.searchBar.placeholder = NSLocalizedString("SEARCH", comment: "Placeholder for searching")
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
+        
+        searchController.searchBar.delegate = self
     }
     
     private func prepareTableView() {

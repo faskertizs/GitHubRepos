@@ -16,6 +16,15 @@ final class DefaultRepositorySearchViewModelTests: XCTestCase {
         
         let viewModel = DefaultRepositorySearchViewModel(gitHubServices: GitHubServicesMock())
         viewModel.fetchRepositories()
-        XCTAssertEqual(viewModel.repos, gitHubServicesMock.reposMock, "❌ New repos are not stored")
+        XCTAssertEqual(viewModel.repos.value, gitHubServicesMock.reposMock, "❌ New repos has not been stored.")
+    }
+    
+    func test_whenAsked_shouldUpdateSearchTerm() {
+        let viewModel = DefaultRepositorySearchViewModel(gitHubServices: GitHubServicesMock())
+        let expectedSearchTerm = "newSearchTerm"
+        
+        viewModel.updateSearchTerm(expectedSearchTerm)
+        let newSearchTerm = viewModel.searchTerm
+        XCTAssertEqual(newSearchTerm, expectedSearchTerm, "❌ searchTerm has not been updated.")
     }
 }

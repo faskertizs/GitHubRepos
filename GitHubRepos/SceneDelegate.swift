@@ -17,7 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        window.rootViewController = UINavigationController(rootViewController: RepositorySearchViewController())
+        let viewModel = DefaultRepositorySearchViewModel(gitHubServices: DefaultGitHubServices(networkManager: DefaultNetworkManager()))
+        
+        window.rootViewController = UINavigationController(rootViewController: RepositorySearchViewController(viewModel: viewModel))
         window.makeKeyAndVisible()
     }
 

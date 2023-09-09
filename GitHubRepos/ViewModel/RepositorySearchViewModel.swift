@@ -8,8 +8,10 @@
 import Foundation
 
 protocol RepositorySearchViewModel {
-    var repos: [GitHubRepo] { get }
+    var repos: Observable<[GitHubRepo]> { get }
     var searchTerm: String { get }
 
     func fetchRepositories()
+    
+    func updateSearchTerm(_: String)
 }
