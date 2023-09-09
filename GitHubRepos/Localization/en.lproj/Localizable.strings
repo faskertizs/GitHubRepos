@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  GitHubRepos
+
+  Created by Zsuzsa Faskerti on 2023. 09. 09..
+  
+*/
+
+
+/* Search screen title */
+"GITHUB_REPOS" = "GitHub Repos";
+
+/* Placeholder for searching */
+"SEARCH" = "Search";

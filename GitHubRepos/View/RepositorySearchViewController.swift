@@ -8,9 +8,6 @@
 import UIKit
 
 class RepositorySearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    var placeholder = "Search"
-    var searchTitle = "GitHub Repos"
     
     let heightOfSearchBar: CGFloat = 50.0
 
@@ -61,13 +58,13 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     private func setupNavigationBar() {
-        title = searchTitle
+        title = NSLocalizedString("GITHUB_REPOS", comment: "Search screen title")
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func setupSearchController() {
-        searchController.searchBar.placeholder = placeholder
+        searchController.searchBar.placeholder = NSLocalizedString("SEARCH", comment: "Placeholder for searching")
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
     }
