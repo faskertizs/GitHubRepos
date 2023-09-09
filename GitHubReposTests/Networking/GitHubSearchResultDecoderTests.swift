@@ -9,7 +9,8 @@ import XCTest
 
 final class GitHubSearchResultDecoderTests: XCTestCase {
 
-    let data = Data.loadJSON(fileName: "SearchReposResponseDataMock", in: Bundle(for: GitHubSearchResultDecoderTests.self))
+    let data = Data.loadJSON(fileName: "SearchReposResponseDataMock",
+                             in: Bundle(for: GitHubSearchResultDecoderTests.self))
 
     func test_decoder_shouldDecodeJSONResponse() {
         XCTAssertNoThrow(try GitHubSearchResultDecoder().decode(from: data))

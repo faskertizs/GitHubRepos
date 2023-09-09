@@ -22,7 +22,7 @@ struct GitHubRepo: Decodable {
     var htmlUrl: String?
     var stargazersCount: Int?
 
-    private var owner: RepoOwner?
+    var owner: RepoOwner?
 
     var ownerName: String? {
         owner?.login
