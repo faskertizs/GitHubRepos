@@ -11,6 +11,13 @@
 		0B70C2362AACF9D20078F446 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B70C2382AACF9D20078F446 /* Localizable.strings */; };
 		0B70C23C2AAD0E690078F446 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C23B2AAD0E690078F446 /* Observable.swift */; };
 		0B70C23D2AAD12090078F446 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C23B2AAD0E690078F446 /* Observable.swift */; };
+		0B70C2432AAD34BA0078F446 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C2422AAD34BA0078F446 /* Coordinator.swift */; };
+		0B70C2442AAD34BA0078F446 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C2422AAD34BA0078F446 /* Coordinator.swift */; };
+		0B70C2462AAD35E00078F446 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C2452AAD35E00078F446 /* ApplicationCoordinator.swift */; };
+		0B70C2472AAD35E00078F446 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C2452AAD35E00078F446 /* ApplicationCoordinator.swift */; };
+		0B70C2492AAD3D6A0078F446 /* ReposCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C2482AAD3D6A0078F446 /* ReposCoordinator.swift */; };
+		0B70C24A2AAD3D6A0078F446 /* ReposCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C2482AAD3D6A0078F446 /* ReposCoordinator.swift */; };
+		0B70C2502AAD8F470078F446 /* RepositorySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C2282AACB4EF0078F446 /* RepositorySearchViewController.swift */; };
 		0B9B63342AAC459900AFE43E /* HttpMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63332AAC459900AFE43E /* HttpMethodTests.swift */; };
 		0B9B63362AAC487900AFE43E /* RequestResourceProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63352AAC487900AFE43E /* RequestResourceProviderTests.swift */; };
 		0B9B63392AAC58FB00AFE43E /* RepositorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63382AAC58FB00AFE43E /* RepositorySearchViewModel.swift */; };
@@ -75,6 +82,9 @@
 		0B70C2282AACB4EF0078F446 /* RepositorySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewController.swift; sourceTree = "<group>"; };
 		0B70C2372AACF9D20078F446 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0B70C23B2AAD0E690078F446 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		0B70C2422AAD34BA0078F446 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		0B70C2452AAD35E00078F446 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		0B70C2482AAD3D6A0078F446 /* ReposCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposCoordinator.swift; sourceTree = "<group>"; };
 		0B9B63332AAC459900AFE43E /* HttpMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethodTests.swift; sourceTree = "<group>"; };
 		0B9B63352AAC487900AFE43E /* RequestResourceProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResourceProviderTests.swift; sourceTree = "<group>"; };
 		0B9B63382AAC58FB00AFE43E /* RepositorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewModel.swift; sourceTree = "<group>"; };
@@ -157,6 +167,16 @@
 			path = Binding;
 			sourceTree = "<group>";
 		};
+		0B70C2412AAD348D0078F446 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				0B70C2422AAD34BA0078F446 /* Coordinator.swift */,
+				0B70C2452AAD35E00078F446 /* ApplicationCoordinator.swift */,
+				0B70C2482AAD3D6A0078F446 /* ReposCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		0B9B63372AAC586800AFE43E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +247,7 @@
 				0BB8A3E02AAB8E36009A1A78 /* AppDelegate.swift */,
 				0BB8A3E22AAB8E36009A1A78 /* SceneDelegate.swift */,
 				0BB8A4342AABC806009A1A78 /* Helper */,
+				0B70C2412AAD348D0078F446 /* Coordinators */,
 				0B70C2272AACB4990078F446 /* View */,
 				0B70C23A2AAD0E570078F446 /* Binding */,
 				0B9B63372AAC586800AFE43E /* ViewModel */,
@@ -431,6 +452,7 @@
 				0BB8A3E12AAB8E36009A1A78 /* AppDelegate.swift in Sources */,
 				0BB8A4222AABAE82009A1A78 /* GitHubRepo.swift in Sources */,
 				0BB8A4322AABB788009A1A78 /* GitHubSearchResultDecoder.swift in Sources */,
+				0B70C2432AAD34BA0078F446 /* Coordinator.swift in Sources */,
 				0BB8A43F2AABCD63009A1A78 /* HttpMethod.swift in Sources */,
 				0BB8A4172AAB9DA4009A1A78 /* DefaultNetworkManager.swift in Sources */,
 				0BB8A4362AABC83C009A1A78 /* Extensions.swift in Sources */,
@@ -439,6 +461,8 @@
 				0BB8A4282AABB060009A1A78 /* GitHubSearchResult.swift in Sources */,
 				0B9B63392AAC58FB00AFE43E /* RepositorySearchViewModel.swift in Sources */,
 				0B70C23C2AAD0E690078F446 /* Observable.swift in Sources */,
+				0B70C2492AAD3D6A0078F446 /* ReposCoordinator.swift in Sources */,
+				0B70C2462AAD35E00078F446 /* ApplicationCoordinator.swift in Sources */,
 				0B70C2292AACB4EF0078F446 /* RepositorySearchViewController.swift in Sources */,
 				0BB8A43C2AABCD21009A1A78 /* RequestResource.swift in Sources */,
 				0BB8A42B2AABB0EA009A1A78 /* DefaultGitHubServices.swift in Sources */,
@@ -456,11 +480,14 @@
 				0BB8A4402AABCD63009A1A78 /* HttpMethod.swift in Sources */,
 				0BB8A4292AABB060009A1A78 /* GitHubSearchResult.swift in Sources */,
 				0BB8A4152AAB93D8009A1A78 /* NetworkManager.swift in Sources */,
+				0B70C24A2AAD3D6A0078F446 /* ReposCoordinator.swift in Sources */,
+				0B70C2442AAD34BA0078F446 /* Coordinator.swift in Sources */,
 				0BB8A42C2AABB0EA009A1A78 /* DefaultGitHubServices.swift in Sources */,
 				0BB8A41F2AABADBA009A1A78 /* GitHubServices.swift in Sources */,
 				0B9B63432AAC5D4500AFE43E /* ExtensionsForTests.swift in Sources */,
 				0BB8A4372AABC83C009A1A78 /* Extensions.swift in Sources */,
 				0B70C23D2AAD12090078F446 /* Observable.swift in Sources */,
+				0B70C2472AAD35E00078F446 /* ApplicationCoordinator.swift in Sources */,
 				0B9B63402AAC5C3D00AFE43E /* GitHubServicesMock.swift in Sources */,
 				0BB8A41B2AABA46A009A1A78 /* NetworkingError.swift in Sources */,
 				0BB8A4232AABAE82009A1A78 /* GitHubRepo.swift in Sources */,
@@ -468,6 +495,7 @@
 				0B9B633D2AAC59F100AFE43E /* DefaultRepositorySearchViewModel.swift in Sources */,
 				0B9B63342AAC459900AFE43E /* HttpMethodTests.swift in Sources */,
 				0B9B633A2AAC58FB00AFE43E /* RepositorySearchViewModel.swift in Sources */,
+				0B70C2502AAD8F470078F446 /* RepositorySearchViewController.swift in Sources */,
 				0BB8A43D2AABCD21009A1A78 /* RequestResource.swift in Sources */,
 				0BB8A4332AABB788009A1A78 /* GitHubSearchResultDecoder.swift in Sources */,
 				0BB8A4182AAB9DA4009A1A78 /* DefaultNetworkManager.swift in Sources */,

@@ -8,7 +8,7 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    var coordinator: ApplicationCoordinator?
     var window: UIWindow?
 
 
@@ -17,9 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        let viewModel = DefaultRepositorySearchViewModel(gitHubServices: DefaultGitHubServices(networkManager: DefaultNetworkManager()))
+        let navigationController = UINavigationController()
+        coordinator = ApplicationCoordinator(navigationController: navigationController)
+        coordinator?.start()
         
-        window.rootViewController = UINavigationController(rootViewController: RepositorySearchViewController(viewModel: viewModel))
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
 
