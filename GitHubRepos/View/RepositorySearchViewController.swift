@@ -104,6 +104,11 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
             }
         }
     }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.cancelSearch()
+        viewModel.updateSearchTerm(searchBar.text ?? "")
+    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.updateSearchTerm(searchText)
@@ -134,7 +139,7 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
     private func setupSearchController() {
         searchController.searchBar.placeholder = NSLocalizedString("SEARCH", comment: "Placeholder for searching")
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
         
         searchController.searchBar.delegate = self
     }

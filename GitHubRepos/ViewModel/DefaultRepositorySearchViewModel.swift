@@ -20,6 +20,7 @@ class DefaultRepositorySearchViewModel: RepositorySearchViewModel {
     var currentPage = 0
     
     func fetchRepositories(completion: @escaping () -> Void) {
+        self.repos.value = []
         gitHubServices.repositories(with: searchTerm) { [weak self] repos in
             self?.repos.value = repos
             self?.currentPage = 1
@@ -38,6 +39,11 @@ class DefaultRepositorySearchViewModel: RepositorySearchViewModel {
         }
     }
     
+    func cancelSearch() {
+        self.repos.value = []
+        self.currentPage = 0
+    }
+
     func updateSearchTerm(_ term: String) {
         searchTerm = term
     }

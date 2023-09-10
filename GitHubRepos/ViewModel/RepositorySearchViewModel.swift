@@ -13,7 +13,9 @@ protocol RepositorySearchViewModel {
 
     func fetchRepositories(completion: @escaping () -> Void)
     func fetchMoreRepositories(completion: @escaping () -> Void)
+    func cancelSearch()
 
+    // Should be done with binding
     func updateSearchTerm(_: String)
     
     func repoViewModel(for index: Int) -> RepositoryViewModel?
