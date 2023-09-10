@@ -54,11 +54,23 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
         return viewModel.repos.value.count
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.layoutIfNeeded()
+    }
+
     // MARK: - Table View Data Source
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = viewModel.repos.value[indexPath.row].name
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath) as? RepositoryTableViewCell else { return UITableViewCell() }
+        cell.configure(with: viewModel.repos.value[indexPath.row])
         return cell
     }
     
@@ -101,7 +113,7 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     private func prepareTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UINib(nibName: "RepositoryTableViewCell", bundle: nil), forCellReuseIdentifier: "repoCell")
         tableView.delegate = self
         tableView.dataSource = self
     }
