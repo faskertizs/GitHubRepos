@@ -9,6 +9,8 @@ import UIKit
 
 class RepositoryTableViewCell: UITableViewCell {
 
+    var viewModel: RepositoryViewModel?
+    
     @IBOutlet weak var repoNameLabel: UILabel!
     @IBOutlet weak var ownerImageView: UIImageView!
     @IBOutlet weak var ownerNameLabel: UILabel!
@@ -25,16 +27,18 @@ class RepositoryTableViewCell: UITableViewCell {
                        starCount:0)
     }
     
-    func configure(with viewModel: GitHubRepo) {
-        updateCellWith(repoName: viewModel.name ?? "",
-                       ownerName: viewModel.ownerName ?? "",
-                       description: viewModel.description ?? "",
-                       language: viewModel.language ?? "",
-                       starCount: viewModel.stargazersCount ?? 0)
+    func configure(with viewModel: RepositoryViewModel) {
+        self.viewModel = viewModel
+        let repo = viewModel.repo
+        updateCellWith(repoName: repo.name ?? "",
+                       ownerName: repo.ownerName ?? "",
+                       description: repo.description ?? "",
+                       language: repo.language ?? "",
+                       starCount: repo.stargazersCount ?? 0)
+        descriptionLabel.sizeToFit()
         if starImageView.image == nil {
             starImageView.image = UIImage(systemName: "star")
         }
-        descriptionLabel.sizeToFit()
     }
 
     private func updateCellWith(repoName: String,

@@ -69,8 +69,11 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
     // MARK: - Table View Data Source
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath) as? RepositoryTableViewCell else { return UITableViewCell() }
-        cell.configure(with: viewModel.repos.value[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell",
+                                                       for: indexPath) as? RepositoryTableViewCell else { return UITableViewCell() }
+        let repo = viewModel.repos.value[indexPath.row]
+        let cellViewModel = DefaultRepositoryViewModel(with: repo)
+        cell.configure(with: cellViewModel)
         return cell
     }
     
