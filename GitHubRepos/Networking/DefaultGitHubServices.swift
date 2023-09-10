@@ -18,7 +18,11 @@ class DefaultGitHubServices {
 extension DefaultGitHubServices: GitHubServices {
     
     func repositories(with term: String, completion: @escaping ([GitHubRepo]) -> Void) {
-        let requestResource = RequestResourceProvider.requestResourceForGitHubRepositorySearch(term: term)
+        repositories(with: term, page: 1, completion: completion)
+    }
+    
+    func repositories(with term: String, page: Int, completion: @escaping ([GitHubRepo]) -> Void) {
+        let requestResource = RequestResourceProvider.requestResourceForGitHubRepositorySearch(term: term, page: page)
         var request: URLRequest
         do {
             request = try URLRequest.request(with: requestResource)

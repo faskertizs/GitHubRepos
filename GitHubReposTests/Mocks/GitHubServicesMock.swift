@@ -15,6 +15,10 @@ class GitHubServicesMock: GitHubServices {
         completion(reposMock)
     }
     
+    func repositories(with term: String, page: Int, completion: @escaping ([GitHubRepo]) -> Void) {
+        completion(reposMock)
+    }
+    
     var reposMock: [GitHubRepo] = {
         var repos: [GitHubRepo] = []
         if let searchResult = try? GitHubSearchResult.mock() {

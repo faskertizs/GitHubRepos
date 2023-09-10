@@ -8,11 +8,12 @@
 import Foundation
 
 struct RequestResourceProvider {
-    static func requestResourceForGitHubRepositorySearch(term: String) -> RequestResource {
+    static func requestResourceForGitHubRepositorySearch(term: String, page: Int) -> RequestResource {
         let searchEndpoint = "https://api.github.com/search/repositories"
         
         return RequestResource(httpMethod: .get,
                                endpoint: searchEndpoint,
-                               queryItems: [URLQueryItem(name: "q", value: term)])
+                               queryItems: [URLQueryItem(name: "q", value: term),
+                                            URLQueryItem(name: "page", value: "\(page)")])
     }
 }

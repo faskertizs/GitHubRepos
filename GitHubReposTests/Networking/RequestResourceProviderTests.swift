@@ -11,22 +11,22 @@ final class RequestResourceProviderTests: XCTestCase {
     
     func test_searchRepositoriesHttpMethod_shouldBeProper() {
         let properHttpMethod = HttpMethod.get
-        let provider = RequestResourceProvider.requestResourceForGitHubRepositorySearch(term: "searchTerm")
-        XCTAssertEqual(provider.httpMethod, properHttpMethod)
+        let resource = RequestResourceProvider.requestResourceForGitHubRepositorySearch(term: "searchTerm", page: 1)
+        XCTAssertEqual(resource.httpMethod, properHttpMethod)
     }
     
     func test_searchRepositoriesEndpoint_shouldBeProper() {
         let properEndpoint = "https://api.github.com/search/repositories"
-        let provider = RequestResourceProvider.requestResourceForGitHubRepositorySearch(term: "searchTerm")
+        let provider = RequestResourceProvider.requestResourceForGitHubRepositorySearch(term: "searchTerm", page: 1)
         XCTAssertEqual(provider.endpoint, properEndpoint)
     }
     
     func test_searchRepositoriesQueries_shouldContainSearchQuery() {
         let searchTerm = "test"
-        let searchTermQueryItemName = "q"
-        let provider = RequestResourceProvider.requestResourceForGitHubRepositorySearch(term: searchTerm)
+        let provider = RequestResourceProvider.requestResourceForGitHubRepositorySearch(term: searchTerm, page: 1)
         var searchQueryByProvider: URLQueryItem?
         
+        let searchTermQueryItemName = "q"
         for item in provider.queryItems {
             if item.name == searchTermQueryItemName {
                 searchQueryByProvider = item
@@ -41,5 +41,26 @@ final class RequestResourceProviderTests: XCTestCase {
         }
         XCTAssertEqual(value, searchTerm)
     }
-
+    
+    func test_searchRepositoriesQueries_shouldContainPageQuery() {
+        let searchTerm = "test"
+        let pageNumber = 1
+        let provider = RequestResourceProvider.requestResourceForGitHubRepositorySearch(term: searchTerm, page: pageNumber)
+        var searchQueryByProvider: URLQueryItem?
+        
+        let searchTermQueryItemName = "page"
+        for item in provider.queryItems {
+            if item.name == searchTermQueryItemName {
+                searchQueryByProvider = item
+            }
+        }
+        
+        XCTAssertNotNil(searchQueryByProvider)
+        
+        guard let value = searchQueryByProvider?.value else {
+            XCTFail("Value for queryItem is nil for search reepositories.")
+            return
+        }
+        XCTAssertEqual(value, "\(pageNumber)")
+    }
 }

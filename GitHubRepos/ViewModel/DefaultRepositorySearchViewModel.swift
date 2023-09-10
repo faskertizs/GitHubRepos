@@ -17,10 +17,24 @@ class DefaultRepositorySearchViewModel: RepositorySearchViewModel {
 
     private(set) var repos: Observable<[GitHubRepo]> = Observable([])
     private(set) var searchTerm: String = ""
+    var currentPage = 0
     
-    func fetchRepositories() {
+    func fetchRepositories(completion: @escaping () -> Void) {
         gitHubServices.repositories(with: searchTerm) { [weak self] repos in
             self?.repos.value = repos
+            self?.currentPage = 1
+            completion()
+        }
+    }
+    
+    func fetchMoreRepositories(completion: @escaping () -> Void) {
+        let nextPage = currentPage + 1
+        gitHubServices.repositories(with: searchTerm, page: nextPage) { [weak self] repos in
+            if !repos.isEmpty {
+                self?.repos.value += repos
+                self?.currentPage += 1
+            }
+            completion()
         }
     }
     

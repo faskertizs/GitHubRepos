@@ -66,6 +66,15 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.layoutIfNeeded()
+
+        if indexPath.row == viewModel.repos.value.count - 1 {
+            tableView.showLoadingFooter()
+            viewModel.fetchMoreRepositories {
+                DispatchQueue.main.async { [weak self] in
+                    self?.tableView.hideLoadingFooter()
+                }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -73,11 +82,6 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
         guard let urlString = repoViewModel.repo.htmlUrl else { return }
         
         coordinator?.repoDetailsRequested(with: urlString)
-    }
-
-    private func repoViewModel(for index: Int) -> RepositoryViewModel {
-        guard let repoViewModel = viewModel.repoViewModel(for: index) else { fatalError("❌ repoViewModel cannot be nil") }
-        return repoViewModel
     }
     
     // MARK: - Table View Data Source
@@ -93,9 +97,16 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
     // MARK: - Search Bar Delegate
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let term = searchController.searchBar.text else { return }
-        viewModel.updateSearchTerm(term)
-        viewModel.fetchRepositories()
+        tableView.showLoadingFooter()
+        viewModel.fetchRepositories {
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.hideLoadingFooter()
+            }
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.updateSearchTerm(searchText)
     }
     
     // MARK: - Helper Methods
@@ -132,5 +143,10 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
         tableView.register(UINib(nibName: "RepositoryTableViewCell", bundle: nil), forCellReuseIdentifier: "repoCell")
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func repoViewModel(for index: Int) -> RepositoryViewModel {
+        guard let repoViewModel = viewModel.repoViewModel(for: index) else { fatalError("❌ repoViewModel cannot be nil") }
+        return repoViewModel
     }
 }

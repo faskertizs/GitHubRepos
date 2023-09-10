@@ -11,8 +11,9 @@ protocol RepositorySearchViewModel {
     var repos: Observable<[GitHubRepo]> { get }
     var searchTerm: String { get }
 
-    func fetchRepositories()
-    
+    func fetchRepositories(completion: @escaping () -> Void)
+    func fetchMoreRepositories(completion: @escaping () -> Void)
+
     func updateSearchTerm(_: String)
     
     func repoViewModel(for index: Int) -> RepositoryViewModel?
