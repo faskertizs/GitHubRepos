@@ -19,6 +19,10 @@ class RepositoryTableViewCell: UITableViewCell {
     @IBOutlet weak var starImageView: UIImageView!
     @IBOutlet weak var starCountLabel: UILabel!
     
+    override func layoutSubviews() {
+        ownerImageView.layer.cornerRadius = ownerImageView.bounds.height / 2
+    }
+    
     override func prepareForReuse() {
         updateCellWith(repoName: "",
                        ownerName: "",
@@ -38,6 +42,15 @@ class RepositoryTableViewCell: UITableViewCell {
         descriptionLabel.sizeToFit()
         if starImageView.image == nil {
             starImageView.image = UIImage(systemName: "star")
+        }
+        if let imageUrlString = viewModel.repo.ownerImageUrlString {
+            viewModel.imageData(for: imageUrlString) { [weak self] data in
+                DispatchQueue.main.async {
+                    self?.ownerImageView.image = UIImage(data: data)
+                }
+            }
+        } else {
+            ownerImageView.image = UIImage(systemName: "person.crop.circle")
         }
     }
 

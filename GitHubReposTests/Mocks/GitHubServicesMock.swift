@@ -8,6 +8,8 @@
 import Foundation
 
 class GitHubServicesMock: GitHubServices {
+    func imageData(for urlString: String, completion: @escaping (Data) -> Void) {
+    }
     
     func repositories(with term: String, completion: @escaping ([GitHubRepo]) -> Void) {
         completion(reposMock)

@@ -9,4 +9,5 @@ import Foundation
 
 protocol NetworkManager {
     func performRequest(_ request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void)
+    func loadData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void)
 }

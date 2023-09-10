@@ -71,8 +71,7 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell",
                                                        for: indexPath) as? RepositoryTableViewCell else { return UITableViewCell() }
-        let repo = viewModel.repos.value[indexPath.row]
-        let cellViewModel = DefaultRepositoryViewModel(with: repo)
+        guard let cellViewModel = viewModel.repoViewModel(for: indexPath.row) else { fatalError("repoViewModel cannot be nil") }
         cell.configure(with: cellViewModel)
         return cell
     }

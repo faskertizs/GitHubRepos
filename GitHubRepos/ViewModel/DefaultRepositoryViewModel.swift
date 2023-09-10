@@ -8,9 +8,18 @@
 import Foundation
 
 class DefaultRepositoryViewModel: RepositoryViewModel {
-    var repo: GitHubRepo
     
-    init(with repo: GitHubRepo) {
+    var repo: GitHubRepo
+    var gitHubServices: GitHubServices!
+    
+    init(with repo: GitHubRepo, gitHubServices: GitHubServices) {
         self.repo = repo
+        self.gitHubServices = gitHubServices
+    }
+    
+    func imageData(for urlString: String, completion: @escaping (Data) -> Void) {
+        gitHubServices.imageData(for: urlString) { data in
+            completion(data)
+        }
     }
 }

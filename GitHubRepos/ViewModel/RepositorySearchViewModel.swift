@@ -14,4 +14,6 @@ protocol RepositorySearchViewModel {
     func fetchRepositories()
     
     func updateSearchTerm(_: String)
+    
+    func repoViewModel(for index: Int) -> RepositoryViewModel?
 }

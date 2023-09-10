@@ -27,4 +27,12 @@ class DefaultRepositorySearchViewModel: RepositorySearchViewModel {
     func updateSearchTerm(_ term: String) {
         searchTerm = term
     }
+    
+    func repoViewModel(for index: Int) -> RepositoryViewModel? {
+        if index < repos.value.count, index >= 0 {
+            let repo = repos.value[index]
+            return DefaultRepositoryViewModel(with: repo, gitHubServices: gitHubServices)
+        }
+        return nil
+    }
 }
