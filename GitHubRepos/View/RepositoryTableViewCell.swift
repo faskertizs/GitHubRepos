@@ -20,6 +20,7 @@ class RepositoryTableViewCell: UITableViewCell {
     @IBOutlet weak var starCountLabel: UILabel!
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         ownerImageView.layer.cornerRadius = ownerImageView.bounds.height / 2
     }
     

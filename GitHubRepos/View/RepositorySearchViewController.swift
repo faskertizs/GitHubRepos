@@ -9,6 +9,8 @@ import UIKit
 
 class RepositorySearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
+    weak var coordinator: ReposCoordinator?
+    
     private var tableView = UITableView()
     
     private var searchController = UISearchController(searchResultsController: nil)
@@ -65,13 +67,25 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.layoutIfNeeded()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let repoViewModel = repoViewModel(for: indexPath.row)
+        guard let urlString = repoViewModel.repo.htmlUrl else { return }
+        
+        coordinator?.repoDetailsRequested(with: urlString)
+    }
 
+    private func repoViewModel(for index: Int) -> RepositoryViewModel {
+        guard let repoViewModel = viewModel.repoViewModel(for: index) else { fatalError("❌ repoViewModel cannot be nil") }
+        return repoViewModel
+    }
+    
     // MARK: - Table View Data Source
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell",
                                                        for: indexPath) as? RepositoryTableViewCell else { return UITableViewCell() }
-        guard let cellViewModel = viewModel.repoViewModel(for: indexPath.row) else { fatalError("repoViewModel cannot be nil") }
+        let cellViewModel = repoViewModel(for: indexPath.row)
         cell.configure(with: cellViewModel)
         return cell
     }

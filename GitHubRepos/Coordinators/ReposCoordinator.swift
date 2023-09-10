@@ -21,10 +21,15 @@ class ReposCoordinator: Coordinator {
         let networkManager = DefaultNetworkManager()
         let githubServices = DefaultGitHubServices(networkManager: networkManager)
         let viewModel = DefaultRepositorySearchViewModel(gitHubServices: githubServices)
+        
         let repositorySearchVC = RepositorySearchViewController(viewModel: viewModel)
+        repositorySearchVC.coordinator = self
                 
         navigationController.pushViewController(repositorySearchVC, animated: false)
     }
     
-    
+    func repoDetailsRequested(with urlString: String) {
+        let vc = WebViewController(urlString: urlString)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

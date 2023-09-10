@@ -25,6 +25,8 @@
 		0B70C25D2AADBCEE0078F446 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C25B2AADBCEE0078F446 /* RepositoryViewModel.swift */; };
 		0B70C25F2AADBD550078F446 /* DefaultRepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C25E2AADBD550078F446 /* DefaultRepositoryViewModel.swift */; };
 		0B70C2602AADBD550078F446 /* DefaultRepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C25E2AADBD550078F446 /* DefaultRepositoryViewModel.swift */; };
+		0B70C2622AADDF980078F446 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C2612AADDF980078F446 /* WebViewController.swift */; };
+		0B70C2632AADDF980078F446 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B70C2612AADDF980078F446 /* WebViewController.swift */; };
 		0B9B63342AAC459900AFE43E /* HttpMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63332AAC459900AFE43E /* HttpMethodTests.swift */; };
 		0B9B63362AAC487900AFE43E /* RequestResourceProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63352AAC487900AFE43E /* RequestResourceProviderTests.swift */; };
 		0B9B63392AAC58FB00AFE43E /* RepositorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B63382AAC58FB00AFE43E /* RepositorySearchViewModel.swift */; };
@@ -96,6 +98,7 @@
 		0B70C2522AAD906B0078F446 /* RepositoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryTableViewCell.xib; sourceTree = "<group>"; };
 		0B70C25B2AADBCEE0078F446 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
 		0B70C25E2AADBD550078F446 /* DefaultRepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepositoryViewModel.swift; sourceTree = "<group>"; };
+		0B70C2612AADDF980078F446 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		0B9B63332AAC459900AFE43E /* HttpMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethodTests.swift; sourceTree = "<group>"; };
 		0B9B63352AAC487900AFE43E /* RequestResourceProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResourceProviderTests.swift; sourceTree = "<group>"; };
 		0B9B63382AAC58FB00AFE43E /* RepositorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewModel.swift; sourceTree = "<group>"; };
@@ -158,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				0B70C2282AACB4EF0078F446 /* RepositorySearchViewController.swift */,
+				0B70C2612AADDF980078F446 /* WebViewController.swift */,
 				0B70C2512AAD906B0078F446 /* RepositoryTableViewCell.swift */,
 				0B70C2522AAD906B0078F446 /* RepositoryTableViewCell.xib */,
 			);
@@ -475,6 +479,7 @@
 				0BB8A4362AABC83C009A1A78 /* Extensions.swift in Sources */,
 				0BB8A41A2AABA46A009A1A78 /* NetworkingError.swift in Sources */,
 				0B9B633C2AAC59F100AFE43E /* DefaultRepositorySearchViewModel.swift in Sources */,
+				0B70C2622AADDF980078F446 /* WebViewController.swift in Sources */,
 				0BB8A4282AABB060009A1A78 /* GitHubSearchResult.swift in Sources */,
 				0B9B63392AAC58FB00AFE43E /* RepositorySearchViewModel.swift in Sources */,
 				0B70C23C2AAD0E690078F446 /* Observable.swift in Sources */,
@@ -513,6 +518,7 @@
 				0BB8A41B2AABA46A009A1A78 /* NetworkingError.swift in Sources */,
 				0BB8A4232AABAE82009A1A78 /* GitHubRepo.swift in Sources */,
 				0B9B63362AAC487900AFE43E /* RequestResourceProviderTests.swift in Sources */,
+				0B70C2632AADDF980078F446 /* WebViewController.swift in Sources */,
 				0B9B633D2AAC59F100AFE43E /* DefaultRepositorySearchViewModel.swift in Sources */,
 				0B9B63342AAC459900AFE43E /* HttpMethodTests.swift in Sources */,
 				0B9B633A2AAC58FB00AFE43E /* RepositorySearchViewModel.swift in Sources */,
