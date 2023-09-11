@@ -10,12 +10,12 @@ import UIKit
 
 // OMG! This is a horrible name for the class. Needs to be renamed, but currently I do not have a better idea. :S
 class AppStarter {
-    let model: GitHubRepoSearcher
+    let model: GitHubRepoSearcherProtocol
     let coordinator: Coordinator
 
     init() {
-        let services = DefaultGitHubServices(networkManager: DefaultNetworkManager())
-        model = DefaultGitHubRepoSearcher(services: services)
+        let services = GitHubServices(networkManager: NetworkManager())
+        model = GitHubRepoSearcher(services: services)
 
         coordinator = ApplicationCoordinator(viewModelProvider: ViewModelProvider(model: model))
     }

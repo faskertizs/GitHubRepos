@@ -7,18 +7,41 @@
 
 import Foundation
 
-protocol RepositorySearchViewModel {
+class RepositorySearchViewModel: RepositorySearchViewModelProtocol {
     
-    var model: GitHubRepoSearcher { get }
+    var model: GitHubRepoSearcherProtocol
+
+    var repos: Observable<[GitHubRepo]> {
+        get {
+            model.repos
+        }
+    }
+
+    init(model: GitHubRepoSearcherProtocol) {
+        self.model = model
+    }
+
+    func fetchRepositories(completion: @escaping () -> Void) {
+        model.fetchRepositories(completion: completion)
+    }
     
-    var repos: Observable<[GitHubRepo]> { get }
+    func fetchMoreRepositories(completion: @escaping () -> Void) {
+        model.fetchMoreRepositories(completion: completion)
+    }
     
-    func fetchRepositories(completion: @escaping () -> Void)
-    func fetchMoreRepositories(completion: @escaping () -> Void)
-    func cancelSearch()
+    func cancelSearch() {
+        model.cancelSearch()
+    }
+
+    func updateSearchTerm(_ term: String) {
+        model.updateSearchTerm(term)
+    }
     
-    func repoViewModel(for index: Int) -> RepositoryViewModel?
-    
-    // Should be done with binding
-    func updateSearchTerm(_ term: String)
+    func repoViewModel(for index: Int) -> RepositoryViewModelProtocol? {
+        if index < model.repos.value.count, index >= 0 {
+            let repo = model.repos.value[index]
+            return RepositoryViewModel(with: repo, model: model)
+        }
+        return nil
+    }
 }

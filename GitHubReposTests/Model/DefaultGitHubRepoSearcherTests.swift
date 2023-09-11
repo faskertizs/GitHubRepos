@@ -10,7 +10,7 @@ import XCTest
 final class GitHubRepoSearcherTests: XCTestCase {
     
     var gitHubServicesMock: GitHubServicesMock!
-    var searcher: DefaultGitHubRepoSearcher!
+    var searcher: GitHubRepoSearcher!
     
     override func setUp() {
         super.setUp()
@@ -19,7 +19,7 @@ final class GitHubRepoSearcherTests: XCTestCase {
         if gitHubServicesMock.reposMock.isEmpty {
             fatalError("❌ Test need repos in mock searcher.")
         }
-        searcher = DefaultGitHubRepoSearcher(services: gitHubServicesMock)
+        searcher = GitHubRepoSearcher(services: gitHubServicesMock)
     }
     
     override func tearDown() {

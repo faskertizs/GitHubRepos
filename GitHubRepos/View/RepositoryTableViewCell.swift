@@ -9,7 +9,7 @@ import UIKit
 
 class RepositoryTableViewCell: UITableViewCell {
 
-    var viewModel: RepositoryViewModel?
+    var viewModel: RepositoryViewModelProtocol?
     
     @IBOutlet weak var repoNameLabel: UILabel!
     @IBOutlet weak var ownerImageView: UIImageView!
@@ -32,7 +32,7 @@ class RepositoryTableViewCell: UITableViewCell {
                        starCount:0)
     }
     
-    func configure(with viewModel: RepositoryViewModel) {
+    func configure(with viewModel: RepositoryViewModelProtocol) {
         self.viewModel = viewModel
         let repo = viewModel.repo
         updateCellWith(repoName: repo.name ?? "",

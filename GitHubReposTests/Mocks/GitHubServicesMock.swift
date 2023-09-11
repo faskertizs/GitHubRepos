@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GitHubServicesMock: GitHubServices {
+class GitHubServicesMock: GitHubServicesProtocol {
     func imageData(for urlString: String, completion: @escaping (Data) -> Void) {
     }
     

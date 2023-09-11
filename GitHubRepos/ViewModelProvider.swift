@@ -8,13 +8,13 @@
 import Foundation
 
 struct ViewModelProvider {
-    private var model: GitHubRepoSearcher
+    private var model: GitHubRepoSearcherProtocol
     
-    init(model: GitHubRepoSearcher) {
+    init(model: GitHubRepoSearcherProtocol) {
         self.model = model
     }
     
-    func makeRepositorySearchViewModel() -> RepositorySearchViewModel {
-        return DefaultRepositorySearchViewModel(model: model)
+    func makeRepositorySearchViewModel() -> RepositorySearchViewModelProtocol {
+        return RepositorySearchViewModel(model: model)
     }
 }

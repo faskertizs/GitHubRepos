@@ -8,20 +8,18 @@
 import Foundation
 import UIKit
 
-extension URLRequest {
-    static func request(with resource: RequestResource) throws -> URLRequest {
-        guard var components = URLComponents(string: resource.endpoint) else {
-            throw NetworkingError.invalidUrl
-        }
-        components.queryItems = resource.queryItems
+
+extension JSONDecoder {
+    func decodeSearchResultFromSnakeCase(from data: Data) throws -> GitHubSearchResult {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         
-        guard let url = components.url else {
-            throw NetworkingError.invalidUrl
+        do {
+            let searchResult = try decoder.decode(GitHubSearchResult.self, from: data)
+            return searchResult
+        } catch {
+            throw error
         }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = resource.httpMethod.name
-        return request
     }
 }
 
@@ -40,4 +38,21 @@ extension UITableView {
     self.tableFooterView?.isHidden = true
     self.tableFooterView = nil
   }
+}
+
+extension URLRequest {
+    static func request(with resource: RequestResource) throws -> URLRequest {
+        guard var components = URLComponents(string: resource.endpoint) else {
+            throw NetworkingError.invalidUrl
+        }
+        components.queryItems = resource.queryItems
+        
+        guard let url = components.url else {
+            throw NetworkingError.invalidUrl
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = resource.httpMethod.name
+        return request
+    }
 }

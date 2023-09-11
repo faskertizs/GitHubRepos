@@ -7,9 +7,19 @@
 
 import Foundation
 
-protocol RepositoryViewModel {
-    var repo: GitHubRepo { get }
-    var model: GitHubRepoSearcher { get }
-
-    func imageData(for: String, completion: @escaping (Data) -> Void)
+class RepositoryViewModel: RepositoryViewModelProtocol {
+    
+    var repo: GitHubRepo
+    var model: GitHubRepoSearcherProtocol
+    
+    init(with repo: GitHubRepo, model: GitHubRepoSearcherProtocol) {
+        self.repo = repo
+        self.model = model
+    }
+    
+    func imageData(for urlString: String, completion: @escaping (Data) -> Void) {
+        model.imageData(for: urlString) { data in
+            completion(data)
+        }
+    }
 }

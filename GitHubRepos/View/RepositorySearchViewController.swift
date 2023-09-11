@@ -15,11 +15,11 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
     
     private var searchController = UISearchController(searchResultsController: nil)
     
-    var viewModel: RepositorySearchViewModel
+    var viewModel: RepositorySearchViewModelProtocol
 
     // MARK: - Life Cycle
     
-    init(viewModel: RepositorySearchViewModel) {
+    init(viewModel: RepositorySearchViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -42,7 +42,7 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
     
     // MARK: - Binding
     
-    private func bind(to viewModel: RepositorySearchViewModel) {
+    private func bind(to viewModel: RepositorySearchViewModelProtocol) {
         viewModel.repos.observe(on: self) { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -150,7 +150,7 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
         tableView.dataSource = self
     }
     
-    private func repoViewModel(for index: Int) -> RepositoryViewModel {
+    private func repoViewModel(for index: Int) -> RepositoryViewModelProtocol {
         guard let repoViewModel = viewModel.repoViewModel(for: index) else { fatalError("❌ repoViewModel cannot be nil") }
         return repoViewModel
     }
