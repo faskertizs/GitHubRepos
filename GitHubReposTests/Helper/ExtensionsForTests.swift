@@ -11,10 +11,10 @@ extension Data {
     static func loadJSON(fileName: String, in bundle: Bundle) -> Data {
         let fileExtension = ".json"
         guard let path = bundle.url(forResource: fileName, withExtension: fileExtension) else {
-            fatalError("Failed to locate file in bundle: \(fileName + fileExtension)")
+            fatalError("❌ Failed to locate file in bundle: \(fileName + fileExtension)")
         }
         guard let data = try? Data(contentsOf: path) else {
-            fatalError("Failed to load json from bundle: \(fileName + fileExtension)")
+            fatalError("❌ Failed to load json from bundle: \(fileName + fileExtension)")
         }
         return data
     }

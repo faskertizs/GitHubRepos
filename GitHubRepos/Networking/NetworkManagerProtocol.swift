@@ -8,6 +8,6 @@
 import Foundation
 
 protocol NetworkManagerProtocol {
-    func performRequest(_ request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void)
-    func loadData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void)
+    func performRequest(_ request: URLRequest, completion: @escaping (Result<Data, NetworkingError>) -> Void)
+    func loadData(from url: URL, completion: @escaping (Result<Data, NetworkingError>) -> Void)
 }

@@ -9,13 +9,13 @@ import Foundation
 
 class NetworkManager: NetworkManagerProtocol {
     
-    func performRequest(_ request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
+    func performRequest(_ request: URLRequest, completion: @escaping (Result<Data, NetworkingError>) -> Void) {
     
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             
             if let error = error {
-                print("❌ \(error.localizedDescription)")
+                completion(.failure(NetworkingError.other(error)))
                 return
             }
             
@@ -33,11 +33,11 @@ class NetworkManager: NetworkManagerProtocol {
         task.resume()
     }
     
-    func loadData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+    func loadData(from url: URL, completion: @escaping (Result<Data, NetworkingError>) -> Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
-                print("❌ \(error.localizedDescription)")
+                completion(.failure(NetworkingError.other(error)))
                 return
             }
             
