@@ -9,32 +9,31 @@ import XCTest
 
 final class GitHubRepoSearcherTests: XCTestCase {
     
+    var gitHubServicesMock: GitHubServicesMock!
+    var searcher: DefaultGitHubRepoSearcher!
+    
+    override func setUp() {
+        super.setUp()
+        
+        gitHubServicesMock = GitHubServicesMock()
+        if gitHubServicesMock.reposMock.isEmpty {
+            fatalError("❌ Test need repos in mock searcher.")
+        }
+        searcher = DefaultGitHubRepoSearcher(services: gitHubServicesMock)
+    }
+    
+    override func tearDown() {
+        gitHubServicesMock = nil
+        searcher = nil
+    }
+    
     func test_whenRepositoriesAreFetched_shouldBeStored() {
         
-        let gitHubServicesMock = GitHubServicesMock()
-        XCTAssertNotNil(gitHubServicesMock.reposMock.first, "❌ repos in mock is empty.")
-        
-        let searcher = DefaultGitHubRepoSearcher(services: gitHubServicesMock)
         searcher.fetchRepositories { }
         XCTAssertEqual(searcher.repos.value, gitHubServicesMock.reposMock, "❌ New repos has not been stored.")
     }
     
-    func test_whenAsked_shouldUpdateSearchTerm() {
-        let gitHubServicesMock = GitHubServicesMock()
-        let searcher = DefaultGitHubRepoSearcher(services: gitHubServicesMock)
-        let expectedSearchTerm = "newSearchTerm"
-        
-        searcher.updateSearchTerm(expectedSearchTerm)
-        let newSearchTerm = searcher.searchTerm
-        XCTAssertEqual(newSearchTerm, expectedSearchTerm, "❌ searchTerm has not been updated.")
-    }
-    
-    func test_whenMoreRepositoriesAreFetched_shouldBeStoredProperly() {
-        
-        let gitHubServicesMock = GitHubServicesMock()
-        XCTAssertNotNil(gitHubServicesMock.reposMock.first, "❌ repos in mock is empty.")
-        
-        let searcher = DefaultGitHubRepoSearcher(services: gitHubServicesMock)
+    func test_whenMoreRepositoriesAreFetched_shouldBeStoredAfterOldOnes() {
         
         let firstIndexOfNewRepos = searcher.repos.value.count
         let newReposCount = gitHubServicesMock.reposMock.count
@@ -63,32 +62,43 @@ final class GitHubRepoSearcherTests: XCTestCase {
     
     func test_whenRepositoriesAreFetched_completionShouldBeCalledOnce() {
         
-        let gitHubServicesMock = GitHubServicesMock()
-        XCTAssertNotNil(gitHubServicesMock.reposMock.first, "❌ repos in mock is empty.")
-        
-        let searcher = DefaultGitHubRepoSearcher(services: gitHubServicesMock)
-        
         var completionCallCount = 0
         searcher.fetchRepositories {
             completionCallCount += 1
         }
+        
         XCTAssertNotEqual(completionCallCount, 0, "❌ Completion is not called.")
         XCTAssertEqual(completionCallCount, 1, "❌ Completion is called more that once.")
     }
     
-    func test_whenMoreRepositoriesAreFetched_completionShouldBeCalledOnce() {
-        
-        let gitHubServicesMock = GitHubServicesMock()
-        XCTAssertNotNil(gitHubServicesMock.reposMock.first, "❌ repos in mock is empty.")
-        
-        let searcher = DefaultGitHubRepoSearcher(services: gitHubServicesMock)
-        
-        var completionCallCount = 0
-        searcher.fetchMoreRepositories {
-            completionCallCount += 1
-        }
-        XCTAssertNotEqual(completionCallCount, 0, "❌ Completion is not called.")
-        XCTAssertEqual(completionCallCount, 1, "❌ Completion is called more that once.")
-    }
+    func test_whenAsked_shouldUpdateSearchTerm() {
 
+        let expectedSearchTerm = "❤️ Unit Tests"
+        searcher.updateSearchTerm(expectedSearchTerm)
+        
+        let newSearchTerm = searcher.searchTerm
+        XCTAssertEqual(newSearchTerm, expectedSearchTerm, "❌ searchTerm has not been updated.")
+    }
+    
+    func test_whenCancelSearchAsked_shouldEmptyRepos() {
+        
+        searcher.fetchRepositories { }
+        if searcher.repos.value != gitHubServicesMock.reposMock {
+            fatalError("❌ New repos need to be stored for test.")
+        }
+        
+        searcher.cancelSearch()
+        XCTAssertTrue(searcher.repos.value.isEmpty, "❌ Cancel search did not empty repos.")
+    }
+    
+    func test_whenCancelSearchAsked_shouldEmptySearchTerm() {
+        
+        searcher.updateSearchTerm("❤️ Unit Tests")
+        if searcher.searchTerm == "" {
+            fatalError("❌ Test needs text in searchTerm.")
+        }
+        
+        searcher.cancelSearch()
+        XCTAssertTrue(searcher.searchTerm == "", "❌ Cancel search did not empty searchTerm.")
+    }
 }

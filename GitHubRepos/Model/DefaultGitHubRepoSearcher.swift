@@ -42,6 +42,7 @@ class DefaultGitHubRepoSearcher: GitHubRepoSearcher {
     
     func cancelSearch() {
         self.repos.value = []
+        self.searchTerm = ""
         self.currentPage = 0
     }
     
