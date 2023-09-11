@@ -14,7 +14,9 @@ class AppStarter {
     let coordinator: Coordinator
 
     init() {
-        model = DefaultGitHubRepoSearcher()
+        let services = DefaultGitHubServices(networkManager: DefaultNetworkManager())
+        model = DefaultGitHubRepoSearcher(services: services)
+
         coordinator = ApplicationCoordinator(viewModelProvider: ViewModelProvider(model: model))
     }
     

@@ -14,7 +14,11 @@ class DefaultGitHubRepoSearcher: GitHubRepoSearcher {
     
     private var currentPage = 0
 
-    private var services = DefaultGitHubServices(networkManager: DefaultNetworkManager())
+    private var services: GitHubServices
+    
+    init(services: GitHubServices) {
+        self.services = services
+    }
     
     func fetchRepositories(completion: @escaping () -> Void) {
         self.repos.value = []
