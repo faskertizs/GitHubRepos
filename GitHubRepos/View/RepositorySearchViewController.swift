@@ -9,13 +9,13 @@ import UIKit
 
 class RepositorySearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
+    var viewModel: RepositorySearchViewModelProtocol
+
     weak var coordinator: ReposCoordinator?
     
     private var tableView = UITableView()
-    
     private var searchController = UISearchController(searchResultsController: nil)
     
-    var viewModel: RepositorySearchViewModelProtocol
 
     // MARK: - Life Cycle
     
