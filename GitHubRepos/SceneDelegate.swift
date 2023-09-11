@@ -8,7 +8,6 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    var coordinator: ApplicationCoordinator?
     var window: UIWindow?
 
 
@@ -17,11 +16,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        let navigationController = UINavigationController()
-        coordinator = ApplicationCoordinator(navigationController: navigationController)
-        coordinator?.start()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        guard let appStarter = appDelegate.appStarter else {
+            fatalError("🆘 appStarter is nil.")
+        }
         
-        window.rootViewController = navigationController
+        appStarter.start()
+
+        window.rootViewController = appStarter.coordinator.navigationController
         window.makeKeyAndVisible()
     }
 

@@ -13,15 +13,15 @@ class ReposCoordinator: Coordinator {
 
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    var viewModelProvider: ViewModelProvider
+    
+    init(navigationController: UINavigationController, viewModelProvider: ViewModelProvider) {
         self.navigationController = navigationController
+        self.viewModelProvider = viewModelProvider
     }
     
     func start() {
-        let networkManager = DefaultNetworkManager()
-        let githubServices = DefaultGitHubServices(networkManager: networkManager)
-        let viewModel = DefaultRepositorySearchViewModel(gitHubServices: githubServices)
-        
+        let viewModel = viewModelProvider.makeRepositorySearchViewModel()
         let repositorySearchVC = RepositorySearchViewController(viewModel: viewModel)
         repositorySearchVC.coordinator = self
                 

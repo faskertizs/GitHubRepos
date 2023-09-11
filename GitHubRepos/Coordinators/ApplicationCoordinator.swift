@@ -10,14 +10,16 @@ import UIKit
 
 class ApplicationCoordinator: Coordinator {
     var children = [Coordinator]()
-    var navigationController: UINavigationController
+    var navigationController = UINavigationController()
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    let viewModelProvider: ViewModelProvider
+    
+    init(viewModelProvider: ViewModelProvider) {
+        self.viewModelProvider = viewModelProvider
     }
     
     func start() {
-        let reposCoordinator = ReposCoordinator(navigationController: navigationController)
+        let reposCoordinator = ReposCoordinator(navigationController: navigationController, viewModelProvider: viewModelProvider)
         children = [reposCoordinator]
         reposCoordinator.start()
     }

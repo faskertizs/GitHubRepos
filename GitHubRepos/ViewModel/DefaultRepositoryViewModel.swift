@@ -10,15 +10,15 @@ import Foundation
 class DefaultRepositoryViewModel: RepositoryViewModel {
     
     var repo: GitHubRepo
-    var gitHubServices: GitHubServices!
+    var model: GitHubRepoSearcher
     
-    init(with repo: GitHubRepo, gitHubServices: GitHubServices) {
+    init(with repo: GitHubRepo, model: GitHubRepoSearcher) {
         self.repo = repo
-        self.gitHubServices = gitHubServices
+        self.model = model
     }
     
     func imageData(for urlString: String, completion: @escaping (Data) -> Void) {
-        gitHubServices.imageData(for: urlString) { data in
+        model.imageData(for: urlString) { data in
             completion(data)
         }
     }

@@ -9,49 +9,38 @@ import Foundation
 
 class DefaultRepositorySearchViewModel: RepositorySearchViewModel {
     
-    var gitHubServices: GitHubServices!
-    
-    init(gitHubServices: GitHubServices!) {
-        self.gitHubServices = gitHubServices
+    var model: GitHubRepoSearcher
+
+    var repos: Observable<[GitHubRepo]> {
+        get {
+            model.repos
+        }
     }
 
-    private(set) var repos: Observable<[GitHubRepo]> = Observable([])
-    private(set) var searchTerm: String = ""
-    var currentPage = 0
-    
+    init(model: GitHubRepoSearcher) {
+        self.model = model
+    }
+
     func fetchRepositories(completion: @escaping () -> Void) {
-        self.repos.value = []
-        gitHubServices.repositories(with: searchTerm) { [weak self] repos in
-            self?.repos.value = repos
-            self?.currentPage = 1
-            completion()
-        }
+        model.fetchRepositories(completion: completion)
     }
     
     func fetchMoreRepositories(completion: @escaping () -> Void) {
-        let nextPage = currentPage + 1
-        gitHubServices.repositories(with: searchTerm, page: nextPage) { [weak self] repos in
-            if !repos.isEmpty {
-                self?.repos.value += repos
-                self?.currentPage += 1
-            }
-            completion()
-        }
+        model.fetchMoreRepositories(completion: completion)
     }
     
     func cancelSearch() {
-        self.repos.value = []
-        self.currentPage = 0
+        model.cancelSearch()
     }
 
     func updateSearchTerm(_ term: String) {
-        searchTerm = term
+        model.updateSearchTerm(term)
     }
     
     func repoViewModel(for index: Int) -> RepositoryViewModel? {
-        if index < repos.value.count, index >= 0 {
-            let repo = repos.value[index]
-            return DefaultRepositoryViewModel(with: repo, gitHubServices: gitHubServices)
+        if index < model.repos.value.count, index >= 0 {
+            let repo = model.repos.value[index]
+            return DefaultRepositoryViewModel(with: repo, model: model)
         }
         return nil
     }

@@ -15,11 +15,11 @@ class RepositorySearchViewController: UIViewController, UITableViewDelegate, UIT
     
     private var searchController = UISearchController(searchResultsController: nil)
     
-    var viewModel: RepositorySearchViewModel!
+    var viewModel: RepositorySearchViewModel
 
     // MARK: - Life Cycle
     
-    init(viewModel: RepositorySearchViewModel!) {
+    init(viewModel: RepositorySearchViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
